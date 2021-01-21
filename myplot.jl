@@ -143,9 +143,9 @@ function spex01_lookat(
           fld3[:,:,:] .= view(ϕ(xnew,ynew,znew),:,:,:)
           ϕ .= view(jlf["h_Q"],:,4,:)
           fld4[:,:,:] .= view(ϕ(xnew,ynew,znew),:,:,:)
+          plot_tim=@sprintf("%g",jlf["t"])
           close(jlf)
           states=[fld1, fld2, fld3, fld4 ]
-          plot_tim=@sprintf("%g",jlf["t"])
           statenames=["u, t="*plot_tim, "v, t="*plot_tim, "η, t="*plot_tim, "θ, t="*plot_tim ]
           plot_head="Baroclinic "
          end
