@@ -1,5 +1,14 @@
 Plots pickup files from channel run.
 
+To run
+```
+using Pkg
+Pkg.instantiate()
+include("myplot.jl")
+```
+
+to run requires input pickups and a grid file, both in jld2.format. 
+
 To generate grid file add
 
 ```
