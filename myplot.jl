@@ -77,7 +77,7 @@ function spex01_lookat(
                                               FloatType=Float64,
                                               DeviceArray=ClimateMachine.array_type(),
                                               polynomialorder=Nel )
-         t2d=StackedBrickTopology( MPI.COMM_WORLD,(xr,yr) )
+         t2d=BrickTopology( MPI.COMM_WORLD,(xr,yr) )
          g2d=DiscontinuousSpectralElementGrid(t2d,
                                               FloatType=Float64,
                                               DeviceArray=ClimateMachine.array_type(),
@@ -113,11 +113,11 @@ function spex01_lookat(
            jlf=jldopen(fn)
            # U[1],U[2],η
            ϕ .= view(jlf["h_Q"],:,1,:)
-           fld1[:,:,nf] .= view(ϕ(xnew,ynew),:,:)
+           fld1[:,:,nf] .= view(ϕ(xnew,ynew,znew),:,:,1)
            ϕ .= view(jlf["h_Q"],:,2,:)
-           fld2[:,:,nf] .= view(ϕ(xnew,ynew),:,:)
+           fld2[:,:,nf] .= view(ϕ(xnew,ynew,znew),:,:,1)
            ϕ .= view(jlf["h_Q"],:,3,:)
-           fld3[:,:,nf] .= view(ϕ(xnew,ynew),:,:)
+           fld3[:,:,nf] .= view(ϕ(xnew,ynew,znew),:,:,1)
            close(jlf)
            nf=nf+1
           end
